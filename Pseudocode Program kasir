@@ -1,0 +1,51 @@
+Program Sistem kasir (memasukan item dan auto calculate total harga).
+
+// Deklarasi Variabel
+READ AND WRITE "Nama_item" with string
+READ AND WRITE "Harga_satuan_item" with number
+READ AND WRITE "Jumlah_item" with number
+READ AND WRITE "total_harga_item" with number 
+READ AND WRITE "total_harga" with number
+RECORD Daftar_Belanjaan
+READ AND WRITE "uang_pembayaran" with number
+READ AND WRITE "uang_kembalian" with number
+
+// Memasukkan Item
+WHILE user_input_item == TRUE DO
+	Input Nama_item
+	Input Harga_satuan_item
+	Input Jumlah_item
+	total_harga_item = harga_satuan_item * jumlah_item
+	total_harga = total_harga + total_harga_item
+	PRINT Daftar_Belanjaan (nama_item, harga_satuan_item, jumlah_item, 	total_harga_item).
+
+	INPUT Tambahkan_item_lain
+	IF Tambahkan_item_lain == "Tidak" THEN
+		user_input_item == FALSE
+	END IF
+END WHILE
+
+// Menampilkan total harga 
+PRINT "Total Harga: ", total_harga
+
+// Pembayaran 
+WHILE Pembayaran_berhasil == FALSE DO
+	INPUT uang_pembayaran
+	kembalian == uang_pembayaran - total_harga
+	IF kembalian < 0 THEN
+		PRINT "Uang pembayaran kurang!!!"
+	ELSE	
+	    PRINT "PEMBAYARAN BERHASIL" (uang_pembayaran, kembalian)
+	    Pembayaran_berhasil = TRUE
+	END IF
+END WHILE
+
+// Struk pembayaran 
+PRINT "=== Struk Pembayaran ==="
+PRINT Daftar_Belanjaan
+PRINT "Total Belanja: ", total_harga
+PRINT "Bayar	  : ", uang_pembayaran
+PRINT "Kembalian	  : ", kembalian
+PRINT "TERIMA KASIH TELAH BERBELANJA :)"
+
+END PROGRAM
